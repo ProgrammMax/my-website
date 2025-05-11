@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас - Мой сайт</title>
+    <title>О нас - Вакансии Кызылорды</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>О нас</h1>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты в нашем городе</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contact.html">Контакты</a></li>
             </ul>
@@ -19,20 +25,150 @@
     </header>
 
     <main>
-        <section class="content">
-            <h2>Кто мы</h2>
-            <p>Здесь вы можете рассказать о себе, своей компании или проекте. Добавьте информацию, которая будет интересна вашим посетителям.</p>
-            
-            <h3>Наша история</h3>
-            <p>Поделитесь историей создания вашего проекта или расскажите о своем опыте.</p>
-            
-            <h3>Наша миссия</h3>
-            <p>Опишите, какие цели вы преследуете и что хотите предложить своим пользователям.</p>
+        <section class="page-header">
+            <h2>О нашем портале</h2>
+            <p>Мы помогаем жителям Кызылорды найти работу, а работодателям — подходящих сотрудников</p>
+        </section>
+
+        <section class="about-content">
+            <div class="about-section">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x400?text=Вакансии+Кызылорды" alt="Команда Вакансии Кызылорды">
+                </div>
+                <div class="about-text">
+                    <h3>Наша миссия</h3>
+                    <p>Портал "Вакансии Кызылорды" создан, чтобы соединить талантливых жителей города с лучшими работодателями. Мы стремимся сделать процесс поиска работы простым, удобным и эффективным.</p>
+                    <p>Наша цель — способствовать снижению безработицы и помогать экономическому развитию Кызылорды через создание эффективной платформы для трудоустройства.</p>
+                </div>
+            </div>
+
+            <div class="about-values">
+                <h3>Наши ценности</h3>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Доверие</h4>
+                        <p>Мы тщательно проверяем всех работодателей, чтобы обеспечить безопасность и надежность для соискателей.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Эффективность</h4>
+                        <p>Мы стремимся сделать поиск работы максимально быстрым и результативным.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Сообщество</h4>
+                        <p>Мы создаем сильное профессиональное сообщество Кызылорды, объединяя людей и компании.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Развитие</h4>
+                        <p>Мы помогаем специалистам расти профессионально и находить лучшие карьерные возможности.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-stats">
+                <h3>Наши достижения</h3>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Вакансий</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">Компаний</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Соискателей</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2000+</span>
+                        <span class="stat-label">Трудоустроено</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h3>Наша команда</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://via.placeholder.com/150?text=Фото" alt="Фото сотрудника">
+                        </div>
+                        <h4>Асхат Жумабеков</h4>
+                        <p class="member-position">Основатель и директор</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://via.placeholder.com/150?text=Фото" alt="Фото сотрудника">
+                        </div>
+                        <h4>Айгуль Сериккызы</h4>
+                        <p class="member-position">HR-консультант</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://via.placeholder.com/150?text=Фото" alt="Фото сотрудника">
+                        </div>
+                        <h4>Ернар Тулегенов</h4>
+                        <p class="member-position">Технический директор</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://via.placeholder.com/150?text=Фото" alt="Фото сотрудника">
+                        </div>
+                        <h4>Дана Айткожа</h4>
+                        <p class="member-position">Менеджер по работе с клиентами</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

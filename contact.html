@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - Мой сайт</title>
+    <title>Контакты - Вакансии Кызылорды</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Контакты</h1>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты в нашем городе</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contact.html">Контакты</a></li>
             </ul>
@@ -19,43 +25,209 @@
     </header>
 
     <main>
-        <section class="content">
+        <section class="page-header">
             <h2>Связаться с нами</h2>
-            <p>Для связи с нами вы можете использовать контактную форму ниже или воспользоваться одним из предложенных способов связи.</p>
+            <p>Наша команда готова ответить на ваши вопросы и помочь в поиске работы или подборе персонала</p>
+        </section>
+
+        <div class="contact-container">
+            <section class="contact-info-section">
+                <div class="contact-box">
+                    <h3>Контактная информация</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Адрес</h4>
+                                <p>г. Кызылорда, ул. Ауэзова, 15, офис 205</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Телефон</h4>
+                                <p>+7 (777) 123-45-67</p>
+                                <p>+7 (777) 765-43-21</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@kyzylorda-jobs.kz</p>
+                                <p>support@kyzylorda-jobs.kz</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Время работы</h4>
+                                <p>Понедельник - Пятница: 9:00 - 18:00</p>
+                                <p>Суббота: 10:00 - 15:00</p>
+                                <p>Воскресенье: Выходной</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h4>Мы в социальных сетях</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <h3>Мы на карте</h3>
+                    <!-- Заглушка для карты. В реальном проекте здесь будет встроенная карта Google или Яндекс -->
+                    <div class="map-placeholder">
+                        <img src="https://via.placeholder.com/600x300?text=Карта+Кызылорды" alt="Карта">
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-form-section">
+                <div class="form-container">
+                    <h3>Отправить сообщение</h3>
+                    <p>Остались вопросы? Заполните форму ниже, и мы свяжемся с вами в ближайшее время.</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Ваше имя <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Тема сообщения <span class="required">*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Выберите тему</option>
+                                <option value="job">Вопрос по вакансии</option>
+                                <option value="employer">Вопрос от работодателя</option>
+                                <option value="cooperation">Сотрудничество</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Сообщение <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">Я согласен на обработку персональных данных</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <section class="faq-section">
+            <h3>Часто задаваемые вопросы</h3>
             
-            <div class="contact-info">
-                <h3>Контактная информация</h3>
-                <p><strong>Email:</strong> info@example.com</p>
-                <p><strong>Телефон:</strong> +7 (123) 456-78-90</p>
-                <p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 123</p>
-            </div>
-            
-            <div class="contact-form">
-                <h3>Форма обратной связи</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя:</label>
-                        <input type="text" id="name" name="name" required>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Как разместить вакансию на сайте?</h4>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="faq-answer">
+                        <p>Для размещения вакансии необходимо зарегистрироваться как работодатель, перейти в раздел "Работодателям" и нажать кнопку "Добавить вакансию". Заполните все необходимые поля и опубликуйте вакансию.</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Как откликнуться на вакансию?</h4>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                     </div>
-                    
-                    <button type="submit">Отправить</button>
-                </form>
+                    <div class="faq-answer">
+                        <p>Чтобы откликнуться на вакансию, необходимо зарегистрироваться как соискатель, найти интересующую вакансию и нажать кнопку "Откликнуться". Вы можете приложить своё резюме или заполнить форму отклика.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Сколько стоит размещение вакансии?</h4>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Базовое размещение вакансии бесплатно. Мы также предлагаем платные пакеты для продвижения вакансий и доступа к расширенным функциям. Подробную информацию можно найти в разделе "Работодателям".</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Как обновить своё резюме?</h4>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Войдите в свой аккаунт, перейдите в раздел "Мои резюме" и выберите резюме, которое хотите обновить. Нажмите кнопку "Редактировать" и внесите необходимые изменения.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
@@ -63,8 +235,36 @@
         // Обработка отправки формы
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            alert('Форма отправлена! В реальном проекте здесь будет код для отправки данных на сервер.');
+            alert('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
             this.reset();
+        });
+        
+        // Обработка FAQ аккордеона
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const toggle = item.querySelector('.faq-toggle');
+            
+            question.addEventListener('click', () => {
+                // Закрываем все другие ответы
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-toggle i').className = 'fas fa-plus';
+                    }
+                });
+                
+                // Открываем или закрываем текущий ответ
+                item.classList.toggle('active');
+                
+                // Меняем иконку
+                if (item.classList.contains('active')) {
+                    toggle.querySelector('i').className = 'fas fa-minus';
+                } else {
+                    toggle.querySelector('i').className = 'fas fa-plus';
+                }
+            });
         });
     </script>
 </body>

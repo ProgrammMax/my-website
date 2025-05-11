@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title>Вакансии Кызылорды</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать на мой сайт</h1>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты в нашем городе</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contact.html">Контакты</a></li>
             </ul>
@@ -20,21 +26,128 @@
 
     <main>
         <section class="hero">
-            <h2>Заголовок страницы</h2>
-            <p>Здесь можно написать краткое описание вашего сайта или приветственное сообщение.</p>
+            <h2>Поиск работы в Кызылорде</h2>
+            <p>Мы собрали лучшие вакансии от проверенных работодателей города</p>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Поиск вакансий..." class="search-input">
+                <button class="search-button"><i class="fas fa-search"></i> Найти</button>
+            </div>
         </section>
 
-        <section class="content">
-            <h3>Раздел 1</h3>
-            <p>Содержимое раздела 1.</p>
+        <section class="featured-categories">
+            <h2>Популярные категории</h2>
             
-            <h3>Раздел 2</h3>
-            <p>Содержимое раздела 2.</p>
+            <div class="category-cards">
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Общепит</h3>
+                    <p>Официанты, бармены, повара, администраторы и другие вакансии в ресторанах и кафе</p>
+                    <a href="category-food.html" class="btn">Смотреть вакансии</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>Торговля</h3>
+                    <p>Продавцы, кассиры, товароведы и другие вакансии в магазинах и торговых центрах</p>
+                    <a href="category-retail.html" class="btn">Смотреть вакансии</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Офисная работа</h3>
+                    <p>Менеджеры, бухгалтеры, администраторы и другие офисные специальности</p>
+                    <a href="category-office.html" class="btn">Смотреть вакансии</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Транспорт</h3>
+                    <p>Водители, курьеры, диспетчеры и другие вакансии в сфере транспорта и логистики</p>
+                    <a href="category-transport.html" class="btn">Смотреть вакансии</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-jobs">
+            <h2>Новые вакансии</h2>
+            
+            <div class="job-listings">
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Официант</h3>
+                        <span class="job-salary">от 120 000 тг</span>
+                    </div>
+                    <div class="job-company">Ресторан "Золотой Дракон"</div>
+                    <p class="job-description">Требуется официант с опытом работы от 1 года. График 2/2, бесплатное питание, дружный коллектив.</p>
+                    <div class="job-footer">
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Центр города</span>
+                        <a href="job-details.html" class="btn-small">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Бармен</h3>
+                        <span class="job-salary">от 150 000 тг</span>
+                    </div>
+                    <div class="job-company">Кафе "Уют"</div>
+                    <p class="job-description">Требуется бармен со знанием классических коктейлей. Опыт работы приветствуется, но не обязателен.</p>
+                    <div class="job-footer">
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Район Казахстан</span>
+                        <a href="job-details.html" class="btn-small">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Повар</h3>
+                        <span class="job-salary">от 180 000 тг</span>
+                    </div>
+                    <div class="job-company">Ресторан "Достар"</div>
+                    <p class="job-description">Требуется повар с опытом работы от 2 лет. Знание казахской и европейской кухни обязательно.</p>
+                    <div class="job-footer">
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Мкр. Акмечеть</span>
+                        <a href="job-details.html" class="btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-container">
+                <a href="all-jobs.html" class="btn btn-large">Смотреть все вакансии</a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
