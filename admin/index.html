@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Вакансии Кызылорды</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Экран авторизации -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <div class="admin-logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Админ-панель</h1>
+                <p>Управление вакансиями Кызылорды</p>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i>
+                        Логин
+                    </label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Пароль
+                    </label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Войти в систему
+                </button>
+                
+                <div class="login-error" id="login-error" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Неверный логин или пароль
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p><i class="fas fa-info-circle"></i> Доступ только для администраторов</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Главная админ-панель -->
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <header class="admin-header">
+            <div class="admin-header-left">
+                <h1><i class="fas fa-tachometer-alt"></i> Админ-панель</h1>
+                <span class="welcome-text">Добро пожаловать, администратор!</span>
+            </div>
+            <div class="admin-header-right">
+                <button class="btn btn-secondary" onclick="viewMainSite()">
+                    <i class="fas fa-external-link-alt"></i>
+                    Основной сайт
+                </button>
+                <button class="btn btn-danger" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Выйти
+                </button>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                    <i class="fas fa-chart-pie"></i> Панель управления
+                </a></li>
+                <li><a href="#jobs" class="nav-link" onclick="showSection('jobs')">
+                    <i class="fas fa-briefcase"></i> Управление вакансиями
+                </a></li>
+                <li><a href="#analytics" class="nav-link" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-line"></i> Аналитика
+                </a></li>
+                <li><a href="#settings" class="nav-link" onclick="showSection('settings')">
+                    <i class="fas fa-cog"></i> Настройки
+                </a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-content">
+            <!-- Панель управления -->
+            <section id="dashboard-section" class="admin-section active">
+                <h2>Панель управления</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-jobs">0</h3>
+                            <p>Всего вакансий</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-views">1,247</h3>
+                            <p>Просмотров сегодня</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-favorites">0</h3>
+                            <p>В избранном</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-companies">0</h3>
+                            <p>Компаний</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Последние действия</h3>
+                    <div class="activity-list" id="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-plus text-success"></i>
+                            <span>Добавлена вакансия "Официант" от ресторана "Арыстан"</span>
+                            <small>2 часа назад</small>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-edit text-warning"></i>
+                            <span>Обновлена вакансия "Менеджер по продажам"</span>
+                            <small>5 часов назад</small>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-trash text-danger"></i>
+                            <span>Удалена устаревшая вакансия "Кассир"</span>
+                            <small>1 день назад</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Управление вакансиями -->
+            <section id="jobs-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Управление вакансиями</h2>
+                    <button class="btn btn-primary" onclick="showAddJobModal()">
+                        <i class="fas fa-plus"></i>
+                        Добавить вакансию
+                    </button>
+                </div>
+                
+                <div class="jobs-table-container">
+                    <table class="jobs-table" id="jobs-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Название</th>
+                                <th>Компания</th>
+                                <th>Категория</th>
+                                <th>Зарплата</th>
+                                <th>Дата</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobs-table-body">
+                            <!-- Вакансии будут загружены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Аналитика -->
+            <section id="analytics-section" class="admin-section">
+                <h2>Аналитика</h2>
+                <div class="analytics-container">
+                    <div class="chart-container">
+                        <h3>Популярные категории</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="categories-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Статистика просмотров</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="views-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Настройки -->
+            <section id="settings-section" class="admin-section">
+                <h2>Настройки системы</h2>
+                <div class="settings-container">
+                    <div class="settings-group">
+                        <h3>Общие настройки</h3>
+                        <div class="setting-item">
+                            <label for="site-title">Название сайта:</label>
+                            <input type="text" id="site-title" value="Вакансии Кызылорды">
+                        </div>
+                        <div class="setting-item">
+                            <label for="admin-email">Email администратора:</label>
+                            <input type="email" id="admin-email" value="admin@kyzylorda-jobs.kz">
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Безопасность</h3>
+                        <button class="btn btn-warning" onclick="changePassword()">
+                            <i class="fas fa-key"></i>
+                            Изменить пароль
+                        </button>
+                        <button class="btn btn-info" onclick="backupData()">
+                            <i class="fas fa-download"></i>
+                            Создать резервную копию
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Модальное окно добавления вакансии -->
+    <div id="add-job-modal" class="modal" style="display: none;">
+        <div class="modal-content job-modal">
+            <span class="modal-close" onclick="closeJobModal()">&times;</span>
+            <h3>Добавить новую вакансию</h3>
+            
+            <form id="add-job-form" class="job-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="job-title">Название вакансии:</label>
+                        <input type="text" id="job-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-company">Компания:</label>
+                        <input type="text" id="job-company" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="job-category">Категория:</label>
+                        <select id="job-category" required>
+                            <option value="food">Общепит</option>
+                            <option value="retail">Торговля</option>
+                            <option value="office">Офисная работа</option>
+                            <option value="transport">Транспорт</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-salary">Зарплата:</label>
+                        <input type="text" id="job-salary" placeholder="100,000 - 150,000 тг">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job-location">Местоположение:</label>
+                    <input type="text" id="job-location" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job-description">Описание:</label>
+                    <textarea id="job-description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job-requirements">Требования (через запятую):</label>
+                    <textarea id="job-requirements" rows="3"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="job-phone">Телефон:</label>
+                        <input type="tel" id="job-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-email">Email:</label>
+                        <input type="email" id="job-email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="job-featured">
+                        Рекомендуемая вакансия
+                    </label>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeJobModal()">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Добавить вакансию</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html> 

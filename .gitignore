@@ -1,0 +1,12 @@
+.vercel
+
+# Админ-панель (отдельная система)
+admin/logs/
+admin/backups/
+admin/temp/
+
+# Системные файлы  
+.DS_Store
+Thumbs.db
+node_modules/
+.env

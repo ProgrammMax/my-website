@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для работодателей - Вакансии Кызылорды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .employer-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .pricing-plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .pricing-plan {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: calc(33.333% - 20px);
+            min-width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid #d4af37;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-plan h3 {
+            margin-top: 0;
+            color: #654321;
+            font-size: 1.5rem;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 15px 0;
+        }
+        
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f5efe0;
+        }
+        
+        .plan-features li:before {
+            content: "✓";
+            color: #d4af37;
+            margin-right: 10px;
+        }
+        
+        .vacancy-form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #654321;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #654321;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e8dcca;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .form-notice {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .benefit {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit i {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .how-it-works {
+            margin: 40px 0;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: #d4af37;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .employer-container {
+                padding: 15px;
+            }
+            
+            .pricing-plan {
+                width: 100%;
+            }
+            
+            .benefit, .step {
+                min-width: 100%;
+            }
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Для работодателей</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="employers.html" class="active-menu-item">Работодателям</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="employer-container">
+            <h2>Разместите вакансию на нашем сайте</h2>
+            <p>Найдите подходящих сотрудников быстро и эффективно. Размещение вакансий на нашей платформе - это доступ к тысячам соискателей в Кызылорде.</p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <i class="fas fa-users"></i>
+                    <h3>Широкая аудитория</h3>
+                    <p>Более 5000 посетителей ежедневно просматривают вакансии на нашем сайте</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Быстрые отклики</h3>
+                    <p>Получайте отклики от соискателей уже в первые часы после публикации</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Качественные кандидаты</h3>
+                    <p>Целевая аудитория, интересующаяся именно вашей сферой деятельности</p>
+                </div>
+            </div>
+            
+            <h2>Тарифные планы</h2>
+            <div class="pricing-plans">
+                <div class="pricing-plan">
+                    <h3>Стандарт</h3>
+                    <div class="price">2000 ₸</div>
+                    <p>Базовое размещение вакансии</p>
+                    <ul class="plan-features">
+                        <li>Размещение на 14 дней</li>
+                        <li>Стандартное отображение</li>
+                        <li>Базовая статистика</li>
+                    </ul>
+                    <button class="btn plan-select" data-plan="standard">Выбрать</button>
+                </div>
+                <div class="pricing-plan">
+                    <h3>Премиум</h3>
+                    <div class="price">5000 ₸</div>
+                    <p>Выделенное размещение</p>
+                    <ul class="plan-features">
+                        <li>Размещение на 30 дней</li>
+                        <li>Выделенное отображение</li>
+                        <li>Продвижение в соцсетях</li>
+                        <li>Расширенная статистика</li>
+                    </ul>
+                    <button class="btn plan-select" data-plan="premium">Выбрать</button>
+                </div>
+                <div class="pricing-plan">
+                    <h3>VIP</h3>
+                    <div class="price">10000 ₸</div>
+                    <p>Максимальное продвижение</p>
+                    <ul class="plan-features">
+                        <li>Размещение на 60 дней</li>
+                        <li>Топовое отображение</li>
+                        <li>Продвижение в соцсетях</li>
+                        <li>Приоритетный поиск</li>
+                        <li>Полная статистика</li>
+                    </ul>
+                    <button class="btn plan-select" data-plan="vip">Выбрать</button>
+                </div>
+            </div>
+            
+            <div class="how-it-works">
+                <h2>Как это работает</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Заполните форму</h3>
+                        <p>Заполните форму с информацией о вашей вакансии, компании и требованиях к кандидатам</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Оплатите размещение</h3>
+                        <p>Выберите подходящий тарифный план и произведите оплату</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Модерация</h3>
+                        <p>Наша команда проверит вашу вакансию и активирует её после одобрения</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Получайте отклики</h3>
+                        <p>Начните получать отклики от заинтересованных кандидатов</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="success-message" class="success-message">
+                <i class="fas fa-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 15px;"></i>
+                <h3>Ваша заявка успешно отправлена!</h3>
+                <p>Спасибо за размещение вакансии. Наша команда проверит информацию и свяжется с вами для подтверждения и активации вакансии после оплаты.</p>
+                <p>Номер заявки: <span id="application-number"></span></p>
+            </div>
+            
+            <div id="vacancy-form" class="vacancy-form">
+                <h2 class="form-title">Форма подачи вакансии</h2>
+                <form id="employerForm">
+                    <input type="hidden" id="selectedPlan" name="selectedPlan" value="standard">
+                    
+                    <h3>Информация о вакансии</h3>
+                    <div class="form-group">
+                        <label for="jobTitle">Название вакансии <span class="required">*</span></label>
+                        <input type="text" id="jobTitle" name="jobTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Категория <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="food">Общепит</option>
+                            <option value="retail">Торговля</option>
+                            <option value="office">Офисная работа</option>
+                            <option value="transport">Транспорт</option>
+                            <option value="construction">Строительство</option>
+                            <option value="education">Образование</option>
+                            <option value="medical">Медицина</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salary">Зарплата <span class="required">*</span></label>
+                        <input type="text" id="salary" name="salary" placeholder="от 150 000 тг" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Местоположение <span class="required">*</span></label>
+                        <input type="text" id="location" name="location" placeholder="Центр города" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Описание вакансии <span class="required">*</span></label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requirements">Требования к кандидату</label>
+                        <textarea id="requirements" name="requirements" rows="3"></textarea>
+                    </div>
+                    
+                    <h3>Информация о компании</h3>
+                    <div class="form-group">
+                        <label for="company">Название компании <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactName">Контактное лицо <span class="required">*</span></label>
+                        <input type="text" id="contactName" name="contactName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactInfo">Контактная информация <span class="required">*</span></label>
+                        <textarea id="contactInfo" name="contactInfo" rows="2" placeholder="Телефон, email, WhatsApp и т.д." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactEmail">Email для связи <span class="required">*</span></label>
+                        <input type="email" id="contactEmail" name="contactEmail" required>
+                        <p class="form-notice">На этот адрес будет отправлена информация о статусе вашей заявки</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="submitJobBtn">Отправить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Обработчики выбора тарифного плана
+        const planButtons = document.querySelectorAll('.plan-select');
+        const selectedPlanInput = document.getElementById('selectedPlan');
+        
+        planButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const plan = this.getAttribute('data-plan');
+                selectedPlanInput.value = plan;
+                
+                // Выделяем выбранный план
+                planButtons.forEach(btn => {
+                    const parentPlan = btn.closest('.pricing-plan');
+                    if (btn === this) {
+                        parentPlan.style.borderTop = '3px solid #28a745';
+                        parentPlan.style.boxShadow = '0 5px 20px rgba(40, 167, 69, 0.2)';
+                    } else {
+                        parentPlan.style.borderTop = '3px solid #d4af37';
+                        parentPlan.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                    }
+                });
+                
+                // Прокручиваем к форме
+                document.getElementById('vacancy-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Обработчик отправки формы
+        const employerForm = document.getElementById('employerForm');
+        
+        employerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const formData = new FormData(employerForm);
+            const vacancyData = {};
+            
+            formData.forEach((value, key) => {
+                vacancyData[key] = value;
+            });
+            
+            // Получаем существующие заявки из localStorage или создаем новый массив
+            const pendingVacancies = JSON.parse(localStorage.getItem('pendingVacancies')) || [];
+            
+            // Добавляем идентификатор заявки и статус
+            vacancyData.id = Date.now();
+            vacancyData.status = 'pending'; // pending, approved, rejected
+            vacancyData.paid = false;
+            vacancyData.submittedAt = new Date().toISOString();
+            
+            // Добавляем новую заявку
+            pendingVacancies.push(vacancyData);
+            
+            // Сохраняем обновленный список заявок
+            localStorage.setItem('pendingVacancies', JSON.stringify(pendingVacancies));
+            
+            // Показываем сообщение об успешной отправке
+            document.getElementById('application-number').textContent = vacancyData.id;
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('vacancy-form').style.display = 'none';
+            
+            // Прокручиваем к сообщению
+            document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html> 

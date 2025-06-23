@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории вакансий - Вакансии Кызылорды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Дополнительные стили для мобильной оптимизации */
+        .categories-container {
+            padding: 20px 10px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        
+        .category-box {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .category-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f5efe0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #d4af37;
+        }
+        
+        .category-box h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: #654321;
+        }
+        
+        .category-box p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .category-count {
+            display: inline-block;
+            background-color: #f5efe0;
+            color: #b8860b;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        @media (min-width: 600px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                padding: 0 20px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .categories-container {
+                padding: 40px 20px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html" class="active-menu-item">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="admin.html">Управление</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Категории вакансий</h2>
+            <p>Выберите подходящую категорию для поиска работы</p>
+        </section>
+
+        <section class="categories-container">
+            <div class="categories-grid" id="categories-grid">
+                <!-- Категории будут добавлены через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализируем мобильное меню
+            if (typeof initMobileMenu === 'function') {
+                initMobileMenu();
+            }
+            
+            // Получаем доступ к данным вакансий через глобальный объект
+            const jobs = window.appJobs || JSON.parse(localStorage.getItem('jobs')) || [];
+            
+            // Определяем категории
+            const categories = [
+                {
+                    id: 'food',
+                    name: 'Общепит',
+                    icon: 'fas fa-utensils',
+                    description: 'Рестораны, кафе, бары, столовые и другие заведения общественного питания'
+                },
+                {
+                    id: 'retail',
+                    name: 'Торговля',
+                    icon: 'fas fa-shopping-cart',
+                    description: 'Магазины, торговые сети, рынки и другие торговые предприятия'
+                },
+                {
+                    id: 'office',
+                    name: 'Офисная работа',
+                    icon: 'fas fa-briefcase',
+                    description: 'Административная работа, документооборот, бухгалтерия и другие офисные должности'
+                },
+                {
+                    id: 'transport',
+                    name: 'Транспорт',
+                    icon: 'fas fa-truck',
+                    description: 'Водители, курьеры, экспедиторы, логисты и другие транспортные специальности'
+                },
+                {
+                    id: 'construction',
+                    name: 'Строительство',
+                    icon: 'fas fa-hard-hat',
+                    description: 'Строители, прорабы, архитекторы, инженеры и другие строительные специальности'
+                },
+                {
+                    id: 'education',
+                    name: 'Образование',
+                    icon: 'fas fa-graduation-cap',
+                    description: 'Преподаватели, воспитатели, тренеры и другие образовательные специальности'
+                },
+                {
+                    id: 'medical',
+                    name: 'Медицина',
+                    icon: 'fas fa-stethoscope',
+                    description: 'Врачи, медсестры, фармацевты и другие медицинские специальности'
+                },
+                {
+                    id: 'other',
+                    name: 'Другое',
+                    icon: 'fas fa-ellipsis-h',
+                    description: 'Другие специальности, не вошедшие в основные категории'
+                }
+            ];
+            
+            // Рендерим категории на странице
+            const categoriesGrid = document.getElementById('categories-grid');
+            
+            categories.forEach(category => {
+                // Считаем количество вакансий в данной категории
+                const jobCount = jobs.filter(job => job.category === category.id).length;
+                
+                // Создаем HTML для категории
+                const categoryBox = document.createElement('div');
+                categoryBox.className = 'category-box';
+                categoryBox.innerHTML = `
+                    <div class="category-icon">
+                        <i class="${category.icon}"></i>
+                    </div>
+                    <h3>${category.name}</h3>
+                    <span class="category-count">${jobCount} ${getJobCountText(jobCount)}</span>
+                    <p>${category.description}</p>
+                    <a href="category.html?id=${category.id}" class="btn">Смотреть вакансии</a>
+                `;
+                
+                categoriesGrid.appendChild(categoryBox);
+            });
+            
+            // Функция для правильного склонения слова "вакансия"
+            function getJobCountText(count) {
+                if (count % 10 === 1 && count % 100 !== 11) {
+                    return 'вакансия';
+                } else if ([2, 3, 4].includes(count % 10) && ![12, 13, 14].includes(count % 100)) {
+                    return 'вакансии';
+                } else {
+                    return 'вакансий';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

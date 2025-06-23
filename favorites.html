@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избранные вакансии - Вакансии Кызылорды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
+                <li><a href="favorites.html" class="active-menu-item">Избранное</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h2>Избранные вакансии</h2>
+            <p>Ваши сохраненные вакансии для быстрого доступа</p>
+        </div>
+
+        <section class="favorites-section">
+            <div class="favorites-controls">
+                <div class="favorites-count">
+                    <span id="favorites-count">0</span> избранных вакансий
+                </div>
+                <div class="favorites-actions">
+                    <button class="btn btn-small" onclick="clearAllFavorites()">
+                        <i class="fas fa-trash"></i> Очистить все
+                    </button>
+                    <button class="btn btn-small" onclick="exportFavorites()">
+                        <i class="fas fa-download"></i> Экспорт
+                    </button>
+                </div>
+            </div>
+
+            <div class="favorites-container" id="favorites-container">
+                <!-- Здесь будут отображаться избранные вакансии -->
+            </div>
+
+            <div class="empty-favorites" id="empty-favorites" style="display: none;">
+                <div class="empty-icon">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+                <h3>Нет избранных вакансий</h3>
+                <p>Добавьте вакансии в избранное, нажав на сердечко на карточке вакансии.</p>
+                <a href="index.html" class="btn">Перейти к поиску вакансий</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="favorites.html">Избранное</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2024</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="favorites.js"></script>
+</body>
+</html> 

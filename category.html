@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вакансии по категории - Вакансии Кызылорды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Дополнительные стили для мобильной оптимизации */
+        .category-header {
+            background-color: #f5efe0;
+            padding: 30px 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        
+        .category-icon-large {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            color: #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #654321;
+            margin-bottom: 10px;
+        }
+        
+        .category-description {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .jobs-container {
+            padding: 0 15px 40px;
+        }
+        
+        .category-jobs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .no-jobs-message {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .no-jobs-icon {
+            font-size: 3rem;
+            color: #e8dcca;
+            margin-bottom: 20px;
+        }
+        
+        .no-jobs-message h3 {
+            color: #654321;
+            margin-bottom: 10px;
+        }
+        
+        .no-jobs-message p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .filters-container {
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filters-title {
+            margin-bottom: 15px;
+            color: #654321;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .filters-title i {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .filters-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .filters-body.visible {
+            max-height: 500px;
+        }
+        
+        .filters-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #654321;
+        }
+        
+        .filter-group select, 
+        .filter-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e8dcca;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .clear-filters {
+            background-color: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .category-header {
+                padding: 50px 20px;
+            }
+            
+            .category-title {
+                font-size: 2.5rem;
+            }
+            
+            .category-jobs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filters-row {
+                flex-direction: row;
+            }
+            
+            .jobs-container {
+                padding: 0 30px 60px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .category-jobs {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Вакансии Кызылорды</h1>
+            <p class="slogan">Найдите работу своей мечты</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="categories.html" class="active-menu-item">Категории</a></li>
+                <li><a href="employers.html">Работодателям</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="admin.html">Управление</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="category-header" id="category-header">
+            <!-- Здесь будет выведена информация о категории -->
+        </section>
+
+        <section class="jobs-container">
+            <div class="filters-container">
+                <h3 class="filters-title" id="filters-toggle">
+                    Фильтры вакансий
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="filters-body" id="filters-body">
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label for="salary-filter">Зарплата</label>
+                            <select id="salary-filter">
+                                <option value="">Любая</option>
+                                <option value="100000">от 100 000 тг</option>
+                                <option value="150000">от 150 000 тг</option>
+                                <option value="200000">от 200 000 тг</option>
+                                <option value="300000">от 300 000 тг</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="location-filter">Район</label>
+                            <select id="location-filter">
+                                <option value="">Любой</option>
+                                <option value="Центр">Центр города</option>
+                                <option value="Казахстан">Район Казахстан</option>
+                                <option value="Мечеть">Район Акмечеть</option>
+                                <option value="Титова">Район Титова</option>
+                                <option value="Гагарина">Район Гагарина</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label for="keyword-filter">Ключевое слово</label>
+                            <input type="text" id="keyword-filter" placeholder="Должность, требования...">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-buttons">
+                        <button id="apply-filters" class="btn">Применить фильтры</button>
+                        <button id="clear-filters" class="clear-filters">Очистить</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-jobs" id="category-jobs">
+                <!-- Здесь будут выведены вакансии выбранной категории -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Вакансии Кызылорды</h3>
+                <p>Ваш надежный портал для поиска работы в Кызылорде</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="employers.html">Работодателям</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Кызылорда, ул. Ауэзова, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (777) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kyzylorda-jobs.kz</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> Вакансии Кызылорды. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализируем мобильное меню
+            if (typeof initMobileMenu === 'function') {
+                initMobileMenu();
+            }
+            
+            // Получаем доступ к утилитам из общего скрипта
+            const getParam = window.appUtils 
+                ? window.appUtils.getParameterByName 
+                : function(name) {
+                    const match = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+                    return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
+                };
+            
+            // Получаем ID категории из URL
+            const categoryId = getParam('id');
+            
+            // Категории и их описания
+            const categories = {
+                food: {
+                    name: 'Общепит',
+                    icon: 'fas fa-utensils',
+                    description: 'Вакансии в ресторанах, кафе, барах, столовых и других заведениях общепита Кызылорды'
+                },
+                retail: {
+                    name: 'Торговля',
+                    icon: 'fas fa-shopping-cart',
+                    description: 'Вакансии в магазинах, торговых сетях, рынках и других торговых предприятиях Кызылорды'
+                },
+                office: {
+                    name: 'Офисная работа',
+                    icon: 'fas fa-briefcase',
+                    description: 'Вакансии в офисах компаний Кызылорды: административная работа, бухгалтерия, менеджмент'
+                },
+                transport: {
+                    name: 'Транспорт',
+                    icon: 'fas fa-truck',
+                    description: 'Вакансии водителей, курьеров, экспедиторов, логистов и других транспортных специальностей'
+                },
+                construction: {
+                    name: 'Строительство',
+                    icon: 'fas fa-hard-hat',
+                    description: 'Вакансии в строительной сфере Кызылорды: строители, прорабы, архитекторы, инженеры'
+                },
+                education: {
+                    name: 'Образование',
+                    icon: 'fas fa-graduation-cap',
+                    description: 'Вакансии в сфере образования: преподаватели, воспитатели, тренеры, репетиторы'
+                },
+                medical: {
+                    name: 'Медицина',
+                    icon: 'fas fa-stethoscope',
+                    description: 'Вакансии в медицинской сфере: врачи, медсестры, фармацевты, лаборанты'
+                },
+                other: {
+                    name: 'Другое',
+                    icon: 'fas fa-ellipsis-h',
+                    description: 'Другие вакансии, не вошедшие в основные категории'
+                }
+            };
+            
+            // Получаем данные о категории
+            const category = categories[categoryId] || {
+                name: 'Все категории',
+                icon: 'fas fa-list',
+                description: 'Поиск среди всех вакансий в Кызылорде'
+            };
+            
+            // Отображаем заголовок категории
+            const categoryHeader = document.getElementById('category-header');
+            categoryHeader.innerHTML = `
+                <div class="category-icon-large">
+                    <i class="${category.icon}"></i>
+                </div>
+                <h2 class="category-title">${category.name}</h2>
+                <p class="category-description">${category.description}</p>
+            `;
+            
+            // Обновляем заголовок страницы
+            document.title = `${category.name} - Вакансии Кызылорды`;
+            
+            // Получаем данные о вакансиях
+            const allJobs = window.appJobs || JSON.parse(localStorage.getItem('jobs')) || [];
+            
+            // Фильтруем вакансии по категории
+            let filteredJobs = categoryId ? allJobs.filter(job => job.category === categoryId) : allJobs;
+            
+            // Обработчик переключения фильтров
+            const filtersToggle = document.getElementById('filters-toggle');
+            const filtersBody = document.getElementById('filters-body');
+            
+            filtersToggle.addEventListener('click', function() {
+                filtersBody.classList.toggle('visible');
+                const icon = filtersToggle.querySelector('i');
+                if (filtersBody.classList.contains('visible')) {
+                    icon.className = 'fas fa-chevron-up';
+                } else {
+                    icon.className = 'fas fa-chevron-down';
+                }
+            });
+            
+            // Обработчики фильтров
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+            const salaryFilter = document.getElementById('salary-filter');
+            const locationFilter = document.getElementById('location-filter');
+            const keywordFilter = document.getElementById('keyword-filter');
+            
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            clearFiltersBtn.addEventListener('click', clearFilters);
+            
+            // Функция применения фильтров
+            function applyFilters() {
+                const salary = salaryFilter.value;
+                const location = locationFilter.value;
+                const keyword = keywordFilter.value.toLowerCase();
+                
+                // Сначала фильтруем по категории
+                filteredJobs = categoryId ? allJobs.filter(job => job.category === categoryId) : allJobs;
+                
+                // Потом применяем дополнительные фильтры
+                if (salary) {
+                    filteredJobs = filteredJobs.filter(job => {
+                        // Извлекаем число из строки зарплаты (например, "от 150 000 тг" -> 150000)
+                        const jobSalary = parseInt(job.salary.replace(/\D/g, ''));
+                        return jobSalary >= parseInt(salary);
+                    });
+                }
+                
+                if (location) {
+                    filteredJobs = filteredJobs.filter(job => 
+                        job.location.toLowerCase().includes(location.toLowerCase())
+                    );
+                }
+                
+                if (keyword) {
+                    filteredJobs = filteredJobs.filter(job => 
+                        job.title.toLowerCase().includes(keyword) || 
+                        job.description.toLowerCase().includes(keyword) || 
+                        job.requirements.toLowerCase().includes(keyword) || 
+                        job.company.toLowerCase().includes(keyword)
+                    );
+                }
+                
+                // Отображаем отфильтрованные вакансии
+                renderJobs(filteredJobs);
+                
+                // Скрываем фильтры после применения на мобильных
+                if (window.innerWidth < 768) {
+                    filtersBody.classList.remove('visible');
+                    filtersToggle.querySelector('i').className = 'fas fa-chevron-down';
+                }
+            }
+            
+            // Функция очистки фильтров
+            function clearFilters() {
+                salaryFilter.value = '';
+                locationFilter.value = '';
+                keywordFilter.value = '';
+                
+                // Фильтруем только по категории
+                filteredJobs = categoryId ? allJobs.filter(job => job.category === categoryId) : allJobs;
+                renderJobs(filteredJobs);
+            }
+            
+            // Функция отображения вакансий
+            function renderJobs(jobs) {
+                const jobsContainer = document.getElementById('category-jobs');
+                jobsContainer.innerHTML = '';
+                
+                if (jobs.length === 0) {
+                    jobsContainer.innerHTML = `
+                        <div class="no-jobs-message">
+                            <div class="no-jobs-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Вакансии не найдены</h3>
+                            <p>К сожалению, по вашему запросу не найдено подходящих вакансий.</p>
+                            <button class="btn" onclick="clearFilters()">Сбросить фильтры</button>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                jobs.forEach(job => {
+                    const jobCard = document.createElement('div');
+                    jobCard.className = 'job-card';
+                    jobCard.innerHTML = `
+                        <div class="job-header">
+                            <h3>${job.title}</h3>
+                            <span class="job-salary">${job.salary}</span>
+                        </div>
+                        <div class="job-company">${job.company}</div>
+                        <p class="job-description">${job.description.substring(0, 100)}${job.description.length > 100 ? '...' : ''}</p>
+                        <div class="job-footer">
+                            <span class="job-location"><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                            <a href="job-details.html?id=${job.id}" class="btn-small">Подробнее</a>
+                        </div>
+                    `;
+                    
+                    jobsContainer.appendChild(jobCard);
+                });
+            }
+            
+            // Первоначальное отображение вакансий
+            renderJobs(filteredJobs);
+            
+            // Обновляем год в футере
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html> 
