@@ -13,6 +13,23 @@
             padding: 20px;
         }
         
+        .employer-container h2 {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .employer-container h3 {
+            color: var(--text-light);
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
         .pricing-plans {
             display: flex;
             flex-wrap: wrap;
@@ -22,84 +39,165 @@
         }
         
         .pricing-plan {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            padding: 30px 25px;
             width: calc(33.333% - 20px);
             min-width: 250px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 3px solid #d4af37;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 4px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-plan::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
         }
         
         .pricing-plan:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .pricing-plan:hover::before {
+            opacity: 1;
         }
         
         .pricing-plan h3 {
             margin-top: 0;
-            color: #654321;
-            font-size: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #d4af37;
-            margin: 15px 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-plan p {
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
         
         .plan-features {
             list-style: none;
             padding: 0;
             margin: 20px 0;
+            position: relative;
+            z-index: 2;
         }
         
         .plan-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f5efe0;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
         
         .plan-features li:before {
             content: "✓";
-            color: #d4af37;
-            margin-right: 10px;
+            color: var(--accent-color);
+            margin-right: 12px;
+            font-weight: bold;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         
         .vacancy-form {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
             margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vacancy-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0.3;
+            border-radius: 20px;
         }
         
         .form-title {
             text-align: center;
-            margin-bottom: 20px;
-            color: #654321;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .form-group {
             margin-bottom: 20px;
         }
         
+        .form-group {
+            position: relative;
+            z-index: 2;
+        }
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            color: #654321;
+            font-weight: 700;
+            color: var(--text-light);
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #e8dcca;
-            border-radius: 5px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
             font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
         
         .form-group textarea {
@@ -133,13 +231,62 @@
             flex: 1;
             min-width: 200px;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .benefit:hover::before {
+            opacity: 1;
         }
         
         .benefit i {
-            font-size: 2.5rem;
-            color: #d4af37;
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .benefit h3 {
+            color: var(--text-light);
+            font-weight: 700;
             margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .benefit p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
         
         .how-it-works {
@@ -156,26 +303,71 @@
         .step {
             flex: 1;
             min-width: 200px;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .step:hover::before {
+            opacity: 1;
+        }
+        
+        .step h3 {
+            color: var(--text-light);
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step p {
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
         
         .step-number {
             position: absolute;
             top: -15px;
             left: 20px;
-            width: 30px;
-            height: 30px;
-            background-color: #d4af37;
-            color: white;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #000;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 3;
+            border: 3px solid rgba(255, 255, 255, 0.8);
         }
         
         @media (max-width: 768px) {
@@ -221,9 +413,12 @@
     </header>
 
     <main>
-        <section class="employer-container">
-            <h2>Разместите вакансию на нашем сайте</h2>
+        <section class="page-header">
+            <h2>Для работодателей</h2>
             <p>Найдите подходящих сотрудников быстро и эффективно. Размещение вакансий на нашей платформе - это доступ к тысячам соискателей в Кызылорде.</p>
+        </section>
+        
+        <section class="employer-container">
             
             <div class="benefits">
                 <div class="benefit">
